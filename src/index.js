@@ -4,7 +4,13 @@ class CoundownTimer {
   constructor({ selector, targetDate }) {
     this.selector = selector;
     this.targetDate = targetDate;
-    this.root = document.querySelector(this.selector);
+    //
+    this.root = document.createElement('div');
+    this.root.classList.add('timer');
+    this.root.setAttribute('id', 'this.selector');
+    document.body.append(this.root);
+
+    // this.root = document.querySelector(this.selector);
     this.template = `<div class="field">
         <span class="value" data-value="days">0</span>
         <span class="label">Days</span>
@@ -73,3 +79,10 @@ const timer = new CoundownTimer({
 });
 
 timer.start();
+
+const timer2 = new CoundownTimer({
+  selector: '#timer-2',
+  targetDate: new Date('Jul 14, 2021'),
+});
+
+timer2.start();
